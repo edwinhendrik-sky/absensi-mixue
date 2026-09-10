@@ -10,7 +10,14 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
-app.use(express.static(path.join(__dirname)));
+
+// Mengatur folder public sebagai folder statis
+app.use(express.static(path.join(__dirname, 'public')));
+
+// --- RUTE HALAMAN UTAMA ---
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
 
 // --- API LOGIN ---
 app.post('/api/login', (req, res) => {
@@ -152,7 +159,6 @@ app.delete('/api/employees/:id', (req, res) => {
 app.post('/api/attendance', (req, res) => {
     const { employee_id, shift_id, store_id, type, selfie } = req.body;
     
-    // Mendapatkan tanggal dan waktu real-time zona waktu Asia/Jakarta (WIB)
     const now = new Date();
     const today = now.toLocaleDateString('en-CA', { timeZone: 'Asia/Jakarta' });
     const nowTime = now.toLocaleTimeString('it-IT', { timeZone: 'Asia/Jakarta' });
