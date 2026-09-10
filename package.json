@@ -1,18 +1,10 @@
-{
-  "name": "mixue-pos",
-  "version": "1.0.0",
-  "description": "Sistem Absensi Mixue",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "body-parser": "^1.20.2",
-    "cors": "^2.8.5",
-    "express": "^4.19.2",
-    "sqlite3": "^6.0.1"
-  },
-  "allowScripts": {
-    "sqlite3@6.0.1": true
-  }
+"dependencies": {
+  "body-parser": "^1.20.2",
+  "cors": "^2.8.5",
+  "express": "^4.19.2",
+  "sqlite3": "^5.1.7"
+}
+"scripts": {
+  "start": "node server.js",
+  "build": "npm install --build-from-source"
 }
